@@ -1,0 +1,3 @@
+username,password,alert,amount,date,manager,supervisor
+tomsmith,WrongSecretPassword!,Your password is invalid!,"$2,000,000 ",1/4/2020,Sujay,Sujay
+wrongusr,SuperSecretPassword!,Your username is invalid!,"$3,250,250 ",1/15/2020,Sujay,Sujay
