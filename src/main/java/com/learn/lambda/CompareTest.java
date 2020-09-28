@@ -1,5 +1,7 @@
 package com.learn.lambda;
 
+import static java.util.Comparator.comparingLong;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -92,7 +94,7 @@ public class CompareTest {
         Arrays.sort(empArr, Employee.AgeComparator);
         System.out.println(Arrays.toString(empArr));
         
-        Arrays.sort(empArr, Comparator.comparingLong(Employee::getSalary));
+        Arrays.sort(empArr, comparingLong(Employee::getSalary));
         System.out.println(Arrays.toString(empArr));
         
 	}

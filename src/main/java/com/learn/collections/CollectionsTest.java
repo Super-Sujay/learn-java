@@ -1,9 +1,10 @@
 package com.learn.collections;
 
+import static java.util.stream.Collectors.joining;
+
 import java.util.Enumeration;
 import java.util.Vector;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class CollectionsTest {
 
@@ -25,7 +26,7 @@ public class CollectionsTest {
 
 		System.out.println();
 
-		System.out.println(v.stream().collect(Collectors.joining(", ", "[", "]")));
+		System.out.println(v.stream().collect(joining(", ", "[", "]")));
 
 	}
 }

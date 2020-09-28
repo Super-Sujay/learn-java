@@ -1,10 +1,11 @@
 package com.learn.files;
 
+import static java.nio.file.Paths.get;
+import static java.util.stream.Collectors.joining;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
 
 public class FileManupulation {
 
@@ -33,7 +34,7 @@ public class FileManupulation {
 		String filePath = System.getProperty("user.dir") + "/src/main/resources/People.txt";
 		String fileContents;
 		try {
-			fileContents = Files.lines(Paths.get(filePath)).collect(Collectors.joining("\n"));
+			fileContents = Files.lines(get(filePath)).collect(joining("\n"));
 		} catch (IOException e) {
 			fileContents = e.getClass().getSimpleName();
 		}

@@ -1,10 +1,11 @@
 package com.learn.collections;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class ArraySumExample {
 
@@ -59,7 +60,7 @@ public class ArraySumExample {
 					.filter(j -> i + j == output)
 					.map(j -> new int[]{i, j}))
 			.distinct()
-			.collect(Collectors.toList());
+			.collect(toList());
 		result.stream().map(Arrays::toString).forEach(System.out::println);
 	}
 }

@@ -36,7 +36,7 @@ public class ListTest {
 		l1.set(0, 5);
 		System.out.println(l1);
 		
-		int[] numbers = l1.stream().mapToInt(Integer::valueOf).toArray();
+		int[] numbers = l1.stream().mapToInt(Integer::intValue).toArray();
 		System.out.println("List converted to Int Array");
 		System.out.println(Arrays.toString(numbers));
 

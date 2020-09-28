@@ -1,7 +1,8 @@
 package com.learn.collections;
 
+import static java.util.Comparator.reverseOrder;
+
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.SortedSet;
@@ -47,7 +48,7 @@ public class SetTest {
 		difference.removeAll(hashSet2);
 		System.out.println("Difference of the two sets is\n" + difference);
 
-		SortedSet<Integer> numbers = new TreeSet<Integer>(Comparator.reverseOrder());
+		SortedSet<Integer> numbers = new TreeSet<Integer>(reverseOrder());
 		for (int i = 0; i < 20; i++)
 			numbers.add(i);
 		System.out.println("Numbers Sorted set is: " + numbers);

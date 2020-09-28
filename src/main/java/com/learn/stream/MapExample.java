@@ -1,11 +1,13 @@
 package com.learn.stream;
 
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class MapExample {
 
@@ -25,9 +27,7 @@ public class MapExample {
 		
 		int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 0, 2, 4, 6, 8, 10, 2, 4, 6, 8 };
 		
-		Map<Integer, Long> freq = Arrays.stream(numbers)
-										.boxed()
-										.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		Map<Integer, Long> freq = Arrays.stream(numbers).boxed().collect(groupingBy(identity(), counting()));
 		System.out.println(freq);
 	}
 

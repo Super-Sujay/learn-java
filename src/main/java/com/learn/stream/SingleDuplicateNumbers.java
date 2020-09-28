@@ -80,8 +80,8 @@ public class SingleDuplicateNumbers {
 				singleNumbers.add(entry.getKey());
 			else
 				duplicateNumbers.add(entry.getKey());
-		int[] duplicates = duplicateNumbers.stream().mapToInt(Integer::valueOf).toArray();
-		int[] singles = singleNumbers.stream().mapToInt(Integer::valueOf).toArray();
+		int[] duplicates = duplicateNumbers.stream().mapToInt(Integer::intValue).toArray();
+		int[] singles = singleNumbers.stream().mapToInt(Integer::intValue).toArray();
 		System.out.println("Duplicate Numbers: " + Arrays.toString(duplicates));
 		System.out.println("Single Numbers: " + Arrays.toString(singles));
 	}

@@ -1,6 +1,7 @@
 package com.learn.stream;
 
-import java.util.Arrays;
+import static java.util.Arrays.asList;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
@@ -19,7 +20,7 @@ public class ReduceStream {
 		int red = stream.reduce(id, sum);
 		System.out.println(red);
 
-		List<Integer> list = Arrays.asList(1, 2, 3, 4);
+		List<Integer> list = asList(1, 2, 3, 4);
 		int sum1 = list.stream().reduce(0, Integer::sum);
 		System.out.println("Sum is: " + sum1);
 

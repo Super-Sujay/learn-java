@@ -1,6 +1,7 @@
 package com.learn.collections;
 
-import java.util.Comparator;
+import static java.util.Comparator.naturalOrder;
+
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -12,7 +13,7 @@ public class QueueTest {
 
 		// Queue implementation using PriorityQueue returns binary tree
 		// representation with the comparator logic provided
-		Queue<Integer> pQueue = new PriorityQueue<Integer>(20, Comparator.naturalOrder());
+		Queue<Integer> pQueue = new PriorityQueue<Integer>(20, naturalOrder());
 		for (int i = 19; i > 0; i--)
 			pQueue.offer(i);
 		System.out.println(pQueue);
@@ -23,14 +24,13 @@ public class QueueTest {
 		for (int i = 19; i > 0; i--)
 			pQueue.offer(i);
 		System.out.println(pQueue);
-		
+
 		// Deque is double ended queue which follows FIFO mechanism
 		Deque<Integer> numbers = new LinkedList<Integer>();
 		for (int i = 19; i > 0; i--)
 			numbers.offer(i);
 		System.out.println(numbers);
-		
-		
+
 	}
 
 }

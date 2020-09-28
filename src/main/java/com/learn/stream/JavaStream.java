@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.*;
 
 public class JavaStream {
 
@@ -56,18 +56,18 @@ public class JavaStream {
 		count = strings.stream().filter(s -> s.length() == 3).count();
 		System.out.println("No of strings with length 3: " + count);
 
-		filteredStrings = strings.stream().filter(s -> !s.isEmpty()).collect(Collectors.toList());
+		filteredStrings = strings.stream().filter(s -> !s.isEmpty()).collect(toList());
 		System.out.println("Filtered strings: " + filteredStrings);
 
-		mergedString = strings.stream().collect(Collectors.joining(", "));
+		mergedString = strings.stream().collect(joining(", "));
 		System.out.println("Merged string is: " + mergedString);
 
 		System.out.println("Number list: " + numbers);
 
-		squares = numbers.stream().map(i -> i * i).distinct().collect(Collectors.toList());
+		squares = numbers.stream().map(i -> i * i).distinct().collect(toList());
 		System.out.println("Square list: " + squares);
 
-		IntSummaryStatistics stats = numbers.stream().mapToInt(Integer::valueOf).summaryStatistics();
+		IntSummaryStatistics stats = numbers.stream().mapToInt(Integer::intValue).summaryStatistics();
 
 		System.out.println("Maximum number in numbers list: " + stats.getMax());
 		System.out.println("Minimum number in numbers list: " + stats.getMin());

@@ -1,11 +1,13 @@
 package com.learn.stream;
 
+import static java.util.Comparator.reverseOrder;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
+
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -46,15 +48,15 @@ public class StreamExamples {
 
 		// Collect the stream to a collection
 		Stream<Integer> intStream = Stream.of(1, 2, 3, 4);
-		List<Integer> intList = intStream.collect(Collectors.toList());
+		List<Integer> intList = intStream.collect(toList());
 		System.out.println("\nThe list using collect is: " + intList);
 		intStream = Stream.of(1, 2, 3, 4);
-		Map<Integer, Integer> intMap = intStream.collect(Collectors.toMap(i -> i, i -> i * i));
+		Map<Integer, Integer> intMap = intStream.collect(toMap(i -> i, i -> i * i));
 		System.out.println("The map using collect is: " + intMap);
 
 		Stream<Integer> intStream1 = Stream.of(1, 2, 3, 4);
 		Integer[] boxedIntArray = intStream1.toArray(Integer[]::new);
-		int[] intArray = Arrays.stream(boxedIntArray).mapToInt(Integer::valueOf).toArray();
+		int[] intArray = Arrays.stream(boxedIntArray).mapToInt(Integer::intValue).toArray();
 		System.out.println("The boxed integer array is: " + Arrays.toString(boxedIntArray));
 		System.out.println("The integer array is: " + Arrays.toString(intArray));
 
@@ -72,7 +74,7 @@ public class StreamExamples {
 		// Sort example
 		Stream<String> names2 = Stream.of("aBc", "d", "ef", "123456");
 		System.out.print("\nThe sorted stream in reverse order is: ");
-		names2.sorted(Comparator.reverseOrder()).forEach(s -> System.out.print(s + " "));
+		names2.sorted(reverseOrder()).forEach(s -> System.out.print(s + " "));
 		names2 = Stream.of("aBc", "d", "ef", "123456");
 		System.out.print("\nThe sorted stream is: ");
 		names2.sorted().forEach(s -> System.out.print(s + " "));

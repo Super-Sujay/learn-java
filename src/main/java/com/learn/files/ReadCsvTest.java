@@ -1,13 +1,14 @@
 package com.learn.files;
 
+import static java.nio.file.Paths.get;
+import static java.util.stream.Collectors.toList;
+
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ReadCsvTest {
 
@@ -24,14 +25,14 @@ public class ReadCsvTest {
 	private static List<Map<String, String>> getCsvData(String pathName, String testCaseName) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			String[] keys = Files.lines(Paths.get(pathName))
+			String[] keys = Files.lines(get(pathName))
 					.findFirst()
 					.orElseThrow(IOException::new)
 					.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-			List<String[]> dataArray = Files.lines(Paths.get(pathName))
+			List<String[]> dataArray = Files.lines(get(pathName))
 				.filter(line -> line.startsWith(testCaseName))
 				.map(line -> line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"))
-				.collect(Collectors.toList());
+				.collect(toList());
 			for (String[] values : dataArray) {
 				Map<String, String> testData = new HashMap<String, String>();
 				for (int i = 1; i < keys.length; i++)

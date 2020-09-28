@@ -1,12 +1,13 @@
 package com.learn.files;
 
+import static org.apache.poi.ss.usermodel.CellType.STRING;
+import static org.apache.poi.ss.usermodel.Row.MissingCellPolicy.RETURN_BLANK_AS_NULL;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidOperationException;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -27,7 +28,7 @@ public class ReadExcelFile {
 			FileInputStream in = new FileInputStream(filePath);
 			XSSFWorkbook excelWorkBook = new XSSFWorkbook(in);
 			in.close();
-			String excelData = excelWorkBook.getSheet(sheetName).getRow(--row).getCell(--column, MissingCellPolicy.RETURN_BLANK_AS_NULL).getStringCellValue();
+			String excelData = excelWorkBook.getSheet(sheetName).getRow(--row).getCell(--column, RETURN_BLANK_AS_NULL).getStringCellValue();
 			excelWorkBook.close();
 			return excelData;
 		} catch (InvalidOperationException e) {
@@ -46,9 +47,9 @@ public class ReadExcelFile {
 			in.close();
 			XSSFSheet excelSheet = excelWorkBook.getSheet(sheetName);
 			XSSFRow excelRow = excelSheet.getRow(--row);
-			XSSFCell excelCell = excelRow.getCell(--column, MissingCellPolicy.RETURN_BLANK_AS_NULL);
+			XSSFCell excelCell = excelRow.getCell(--column, RETURN_BLANK_AS_NULL);
 			if (excelCell == null) {
-				excelCell = excelRow.createCell(column, CellType.STRING);
+				excelCell = excelRow.createCell(column, STRING);
 				excelCell.setCellValue(value);
 			} else
 				excelCell.setCellValue(value);

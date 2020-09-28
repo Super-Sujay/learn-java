@@ -1,12 +1,14 @@
 package com.learn.collections;
 
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class PrintFrequencyTest {
 
@@ -25,7 +27,7 @@ public class PrintFrequencyTest {
 		hash.forEach((k, v) -> System.out.println("Frequency of " + k + " is " + v));
 
 	}
-	
+
 	private static void printFreqTree(int[] array) {
 
 		SortedMap<Integer, Integer> hash = new TreeMap<Integer, Integer>();
@@ -41,12 +43,9 @@ public class PrintFrequencyTest {
 		hash.forEach((k, v) -> System.out.println("Frequency of " + k + " is " + v));
 
 	}
-	
+
 	private static void printFreqStream(int[] array) {
-		Arrays.stream(array)
-			.boxed()
-			.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-			.forEach((k, v) -> System.out.println("Frequency of " + k + " is " + v));
+		Arrays.stream(array).boxed().collect(groupingBy(identity(), counting())).forEach((k, v) -> System.out.println("Frequency of " + k + " is " + v));
 	}
 
 	public static void main(String[] args) {
