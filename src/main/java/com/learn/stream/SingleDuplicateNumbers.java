@@ -63,7 +63,7 @@ public class SingleDuplicateNumbers {
 	 * In Java 7
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 0, 2, 4, 6, 8, 10, 2, 4, 6, 8 };
 		List<Integer> duplicateNumbers = new ArrayList<Integer>();
 		List<Integer> singleNumbers = new ArrayList<Integer>();
@@ -90,6 +90,15 @@ public class SingleDuplicateNumbers {
 		int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 0, 2, 4, 6, 8, 10, 2, 4, 6, 8 };
 		int[] duplicates = stream(numbers).boxed().collect(groupingBy(identity(), counting())).entrySet().stream().filter(e -> e.getValue() > 1).mapToInt(Entry::getKey).toArray();
 		int[] singles = stream(numbers).boxed().collect(groupingBy(identity(), counting())).entrySet().stream().filter(e -> e.getValue() == 1).mapToInt(Entry::getKey).toArray();
+		System.out.println("Duplicate Numbers in array: " + Arrays.toString(duplicates));
+		System.out.println("Single Numbers in array: " + Arrays.toString(singles));
+	}
+	
+	public static void main(String[] args) {
+		int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 0, 2, 4, 6, 8, 10, 2, 4, 6, 8 };
+		Map<Integer, Long> freq = Arrays.stream(numbers).boxed().collect(groupingBy(identity(), counting()));
+		int[] singles = freq.entrySet().stream().filter(e -> e.getValue() == 1).mapToInt(Entry::getKey).toArray();
+		int[] duplicates = freq.entrySet().stream().filter(e -> e.getValue() > 1).mapToInt(Entry::getKey).toArray();
 		System.out.println("Duplicate Numbers in array: " + Arrays.toString(duplicates));
 		System.out.println("Single Numbers in array: " + Arrays.toString(singles));
 	}

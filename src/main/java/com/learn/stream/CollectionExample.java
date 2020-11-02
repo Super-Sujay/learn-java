@@ -6,13 +6,14 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.summingInt;
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toMap;
-import static java.util.stream.Collectors.toSet;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class CollectionExample {
 
 		System.out.println(map1);
 
-		Map<Integer, Set<String>> map2 = persons.stream().collect(groupingBy(Person1::getAge, mapping(Person1::getName, toSet())));
+		Map<Integer, Set<String>> map2 = persons.stream().collect(groupingBy(Person1::getAge, mapping(Person1::getName, toCollection(HashSet::new))));
 
 		System.out.println(map2);
 

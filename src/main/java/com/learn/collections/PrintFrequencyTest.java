@@ -16,12 +16,12 @@ public class PrintFrequencyTest {
 
 		Map<Integer, Integer> hash = new HashMap<Integer, Integer>();
 
-		for (int i = 0; i < array.length; i++) {
-			Integer c = hash.get(array[i]);
+		for (int i : array) {
+			Integer c = hash.get(i);
 			if (c == null)
-				hash.put(array[i], 1);
+				hash.put(i, 1);
 			else
-				hash.put(array[i], ++c);
+				hash.put(i, ++c);
 		}
 
 		hash.forEach((k, v) -> System.out.println("Frequency of " + k + " is " + v));

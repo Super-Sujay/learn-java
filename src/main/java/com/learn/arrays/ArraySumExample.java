@@ -1,4 +1,4 @@
-package com.learn.collections;
+package com.learn.arrays;
 
 import static java.util.stream.Collectors.toList;
 
@@ -9,16 +9,16 @@ import java.util.Set;
 
 public class ArraySumExample {
 
-	public static void main1(String[] args) {
-		int[] numbers = { 2, 4, 3, 5, 6, -2, 3, 7, 8, 9 };
-		int output = 7, count = 0;
+	public static void main(String[] args) {
+		int numbers[] = { 2, 4, 3, 5, 6, -2, 3, 7, 8, 9 }, output = 7, count = 0;
 		Set<Integer> set = new HashSet<Integer>(numbers.length);
-		for (int value : numbers) {
-			int target = output - value;
-			if (set.contains(target))
+		for (int number : numbers) {
+			int target = output - number;
+			if (set.contains(target)) {
+				System.out.printf("(%d, %d) %n", number, target);
 				count++;
-			set.add(value);
-			System.out.println(set);
+			}
+			set.add(number);
 		}
 		System.out.println(count);
 	}
@@ -28,12 +28,13 @@ public class ArraySumExample {
 		int output = 7, count = 0;
 		for (int i = 0; i < numbers.length; i++)
 			for (int j = i + 1; j < numbers.length; j++)
-				if (numbers[i] + numbers[j] == output)
+				if (numbers[i] + numbers[j] == output) {
 					count++;
-//					System.out.printf("(%d, %d) %n", numbers[i], numbers[j]);
+					System.out.printf("(%d, %d) %n", numbers[i], numbers[j]);
+				}
 		System.out.println(count);
 	}
-	
+
 	private static int count = 0;
 	
 	public static void main3(String[] args) {
@@ -50,16 +51,14 @@ public class ArraySumExample {
 		System.out.println(count);
 	}
 	
-	public static void main(String[] args) {
+	public static void main4(String[] args) {
 		int[] numbers = { 2, 4, 3, 5, 6, -2, 3, 7, 8, 9 };
 		int output = 7;
 		List<int[]> result = Arrays.stream(numbers)
 			.boxed()
 			.flatMap(i -> Arrays.stream(numbers)
-					.boxed()
 					.filter(j -> i + j == output)
-					.map(j -> new int[]{i, j}))
-			.distinct()
+					.mapToObj(j -> new int[]{i, j}))
 			.collect(toList());
 		result.stream().map(Arrays::toString).forEach(System.out::println);
 	}
